@@ -17,4 +17,16 @@ class HobbyEntity(
 
     @Column(columnDefinition = "VARCHAR(50)", nullable = false)
     val name: String,
+
+    @Column(columnDefinition = "VARCHAR(100)", nullable = false)
+    val content: String,
+
+    @Column(columnDefinition = "BIT(1)", nullable = false)
+    val isActive: Boolean,
+
+    @Column(columnDefinition = "BIT(1)", nullable = false)
+    val isSolo: Boolean,
+
+    @Column(columnDefinition = "INT", nullable = false)
+    val hobbyAge: Int,
 )

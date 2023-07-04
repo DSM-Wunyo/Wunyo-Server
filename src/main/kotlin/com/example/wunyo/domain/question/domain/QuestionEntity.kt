@@ -17,10 +17,4 @@ class QuestionEntity(
 
     @Column(columnDefinition = "VARCHAR(255)", nullable = false)
     val content: String,
-
-    @Column(columnDefinition = "BIT(1)", nullable = false)
-    val isActive: Boolean,
-
-    @Column(columnDefinition = "BIT(1)", nullable = false)
-    val isSolo: Boolean,
 )

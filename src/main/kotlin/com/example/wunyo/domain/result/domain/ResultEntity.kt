@@ -2,7 +2,6 @@ package com.example.wunyo.domain.result.domain
 
 import com.example.wunyo.domain.hobby.domain.HobbyEntity
 import com.example.wunyo.domain.user.domain.UserEntity
-import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType
 import jakarta.persistence.GeneratedValue
@@ -21,10 +20,7 @@ class ResultEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
-
-    @Column(columnDefinition = "VARCHAR(100)", nullable = false)
-    val content: String,
+    val id: Int = 0,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
