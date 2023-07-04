@@ -21,11 +21,14 @@ class ResultController(
     fun getResultList(
         @RequestParam name: String,
         @RequestParam sex: Sex,
-        @RequestParam birthday: LocalDate,
+        @RequestParam birthday: LocalDate
     ) = resultService.getResultList(name, sex, birthday)
 
+    @GetMapping("/one")
+    fun getOneResult(@RequestParam("result-id") resultId: Int) =
+        resultService.getOneResult(resultId)
+
     @PostMapping
-    fun saveResult(@RequestBody request: SaveResultRequest): Int {
-        return resultService.saveResult(request)
-    }
+    fun saveResult(@RequestBody request: SaveResultRequest) =
+        resultService.saveResult(request)
 }

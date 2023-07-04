@@ -5,10 +5,13 @@ import com.example.wunyo.domain.result.domain.ResultEntity
 import com.example.wunyo.domain.result.domain.ResultRepository
 import com.example.wunyo.domain.result.presentation.dto.response.QueryResultList
 import com.example.wunyo.domain.result.presentation.dto.response.QueryResultList.ResultElement
+import com.example.wunyo.domain.result.presentation.dto.response.QueryResultResponse
 import com.example.wunyo.domain.result.presentation.dto.response.SaveResultRequest
 import com.example.wunyo.domain.user.domain.UserRepository
 import com.example.wunyo.domain.user.domain.type.Sex
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.lang.IllegalArgumentException
 import java.time.LocalDate
 
 @Service
@@ -83,5 +86,15 @@ class ResultService(
         )
 
         return result.id
+    }
+
+    fun getOneResult(resultId: Int): QueryResultResponse {
+        val result = resultRepository.findByIdOrNull(resultId)
+            ?: throw IllegalArgumentException("error")
+
+        return QueryResultResponse(
+            recommendHobby = result.hobby.name,
+            content = result.hobby.content,
+        )
     }
 }
