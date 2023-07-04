@@ -25,7 +25,7 @@ class ResultController(
     ) = resultService.getResultList(name, sex, birthday)
 
     @PostMapping
-    fun saveResult(@RequestBody request: SaveResultRequest) {
-        resultService.saveResult(request)
+    fun saveResult(@RequestBody request: SaveResultRequest): Int {
+        return resultService.saveResult(request)
     }
 }

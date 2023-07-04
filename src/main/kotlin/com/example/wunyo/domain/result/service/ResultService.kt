@@ -31,7 +31,7 @@ class ResultService(
         return QueryResultList(response)
     }
 
-    fun saveResult(request: SaveResultRequest) {
+    fun saveResult(request: SaveResultRequest): Int {
         val user = userRepository.findByName(request.name)
 
         val ceilAge = when (LocalDate.now().dayOfYear - request.birthday.dayOfYear + 1) { // user age 평균 내기
@@ -75,11 +75,13 @@ class ResultService(
             }
         }
 
-        resultRepository.save(
+        val result = resultRepository.save(
             ResultEntity(
                 user = user,
                 hobby = hobby,
             )
         )
+
+        return result.id
     }
 }
