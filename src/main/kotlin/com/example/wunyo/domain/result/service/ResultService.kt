@@ -11,7 +11,6 @@ import com.example.wunyo.domain.user.domain.UserRepository
 import com.example.wunyo.domain.user.domain.type.Sex
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
-import java.lang.IllegalArgumentException
 import java.time.LocalDate
 
 @Service

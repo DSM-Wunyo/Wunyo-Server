@@ -4,7 +4,6 @@ import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface HobbyRepository : CrudRepository<HobbyEntity, Int> {
+interface HobbyRepository : CrudRepository<HobbyEntity, Int>, CustomHobbyRepository {
 
-    fun findByHobbyAgeAndActiveAndSolo(hobbyAge: Int, isActive: Boolean, isSolo: Boolean): HobbyEntity
 }
