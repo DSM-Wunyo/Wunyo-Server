@@ -11,12 +11,14 @@ class UserService(
 ) {
 
     fun userInputInfo(request: UserInputInfoRequest) {
-        userRepository.save(
-            UserEntity(
-                name = request.name,
-                sex = request.sex,
-                birthday = request.birthday,
+        if (!userRepository.existsByName(request.name)) {
+            userRepository.save(
+                UserEntity(
+                    name = request.name,
+                    sex = request.sex,
+                    birthday = request.birthday,
+                )
             )
-        )
+        }
     }
 }
