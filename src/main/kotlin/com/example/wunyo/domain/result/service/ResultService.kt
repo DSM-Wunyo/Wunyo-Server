@@ -26,6 +26,7 @@ class ResultService(
 
         val response = result.map {
             ResultElement(
+                resultId = it.id,
                 hobbyId = it.hobby.id,
                 hobby = it.hobby.name,
                 resultDate = it.createdDate,
