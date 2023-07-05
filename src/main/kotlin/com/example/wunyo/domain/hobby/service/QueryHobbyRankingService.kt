@@ -21,6 +21,6 @@ class QueryHobbyRankingService(
             )
         }
 
-        return QueryHobbyRankingList(response)
+        return QueryHobbyRankingList(response.sortedByDescending { it.ratio })
     }
 }
