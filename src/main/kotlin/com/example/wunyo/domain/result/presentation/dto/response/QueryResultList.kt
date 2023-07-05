@@ -7,6 +7,7 @@ data class QueryResultList(
     val resultList: List<ResultElement>,
 ) {
     data class ResultElement(
+        val hobbyId: Int,
         val hobby: String,
         val resultDate: LocalDateTime,
     )
