@@ -9,7 +9,7 @@ class CustomHobbyRepositoryImpl(
     private val jpaQueryFactory: JPAQueryFactory,
 ) : CustomHobbyRepository {
 
-    override fun findByHobbyAgeAndActiveAndSolo(hobbyAge: Int, isActive: Boolean, isSolo: Boolean): HobbyEntity =
+    override fun findHobby(hobbyAge: Int, isActive: Boolean, isSolo: Boolean): HobbyEntity =
         jpaQueryFactory
             .selectFrom(hobbyEntity)
             .where(
