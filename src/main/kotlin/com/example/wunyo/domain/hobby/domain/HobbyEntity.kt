@@ -22,10 +22,10 @@ class HobbyEntity(
     val content: String,
 
     @Column(columnDefinition = "BIT(1)", nullable = false)
-    val isActive: Boolean,
+    val active: Boolean,
 
     @Column(columnDefinition = "BIT(1)", nullable = false)
-    val isSolo: Boolean,
+    val solo: Boolean,
 
     @Column(columnDefinition = "INT", nullable = false)
     val hobbyAge: Int,
