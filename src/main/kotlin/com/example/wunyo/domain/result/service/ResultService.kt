@@ -31,7 +31,7 @@ class ResultService(
             )
         }
 
-        return QueryResultList(response)
+        return QueryResultList(response.sortedByDescending { it.resultDate })
     }
 
     fun saveResult(request: SaveResultRequest): SaveResultResponse {
