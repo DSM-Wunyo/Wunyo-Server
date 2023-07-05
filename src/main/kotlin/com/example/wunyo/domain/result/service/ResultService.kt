@@ -41,7 +41,7 @@ class ResultService(
             in 0..29 -> 20
             in 30..49 -> 40
             in 50..100 -> 50
-            else -> 10
+            else -> 20
         }
 
         val hobby = when {
