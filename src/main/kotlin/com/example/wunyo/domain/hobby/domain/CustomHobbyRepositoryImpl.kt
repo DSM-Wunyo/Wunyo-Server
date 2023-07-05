@@ -16,18 +16,24 @@ class CustomHobbyRepositoryImpl(
             .where(
                 hobbyEntity.hobbyAge.eq(hobbyAge),
                 hobbyEntity.active.eq(isActive),
-                hobbyEntity.solo.eq(isSolo)
+                hobbyEntity.solo.eq(isSolo),
             )
             .fetchFirst()
 
-    override fun countHobby(): Map<String, String> =
-        jpaQueryFactory
+    override fun countHobby(): Map<String, Int> {
+        val result = jpaQueryFactory
             .select(
                 resultEntity.hobby.name,
-                resultEntity.count()
+                resultEntity.id.count(),
             )
             .from(resultEntity)
             .groupBy(resultEntity.hobby.name)
             .fetch()
-            .associate { resultEntity.hobby.name.toString() to resultEntity.count().toString() }
+
+        return result.associate { tuple ->
+            val hobby = tuple.get(resultEntity.hobby.name)
+            val count = tuple.get(resultEntity.id.count())!!.toInt()
+            hobby.toString() to count
+        }
+    }
 }
