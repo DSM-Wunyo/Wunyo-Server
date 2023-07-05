@@ -1,6 +1,7 @@
 package com.example.wunyo.domain.result.service
 
 import com.example.wunyo.domain.hobby.domain.HobbyRepository
+import com.example.wunyo.domain.question.presentation.dto.response.SaveResultResponse
 import com.example.wunyo.domain.result.domain.ResultEntity
 import com.example.wunyo.domain.result.domain.ResultRepository
 import com.example.wunyo.domain.result.presentation.dto.response.QueryResultList
@@ -33,7 +34,7 @@ class ResultService(
         return QueryResultList(response)
     }
 
-    fun saveResult(request: SaveResultRequest): Int {
+    fun saveResult(request: SaveResultRequest): SaveResultResponse {
         val user = userRepository.findByName(request.name)
 
         val ceilAge = when (LocalDate.now().dayOfYear - request.birthday.dayOfYear + 1) { // user age 평균 내기
@@ -84,7 +85,7 @@ class ResultService(
             )
         )
 
-        return result.id
+        return SaveResultResponse(result.id)
     }
 
     fun getOneResult(resultId: Int): QueryResultResponse {
@@ -92,6 +93,7 @@ class ResultService(
             ?: throw IllegalArgumentException("error")
 
         return QueryResultResponse(
+            hobbyId = result.hobby.id,
             recommendHobby = result.hobby.name,
             content = result.hobby.content,
         )

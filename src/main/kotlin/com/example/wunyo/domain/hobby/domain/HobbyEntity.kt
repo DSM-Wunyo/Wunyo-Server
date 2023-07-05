@@ -14,7 +14,7 @@ class HobbyEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    val id: Int = 0,
 
     @Column(columnDefinition = "VARCHAR(50)", nullable = false)
     val name: String,
