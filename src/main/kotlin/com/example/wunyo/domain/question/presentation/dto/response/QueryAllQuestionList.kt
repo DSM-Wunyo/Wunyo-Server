@@ -6,5 +6,7 @@ data class QueryAllQuestionList(
     data class QuestionElement(
         val questionId: Int,
         val questionContent: String,
+        val isActive: Boolean,
+        val isSolo: Boolean,
     )
 }

@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+import jakarta.validation.constraints.NotNull
 
 @Table(name = "tbl_question")
 @Entity
@@ -17,4 +18,10 @@ class QuestionEntity(
 
     @Column(columnDefinition = "VARCHAR(255)", nullable = false)
     val content: String,
+
+    @field:NotNull
+    val isActive: Boolean,
+
+    @field:NotNull
+    val isSolo: Boolean,
 )

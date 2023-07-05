@@ -17,6 +17,8 @@ class QuestionService(
             QuestionElement(
                 questionId = it.id,
                 questionContent = it.content,
+                isActive = it.isActive,
+                isSolo = it.isSolo,
             )
         }
 
