@@ -4,6 +4,7 @@ data class QueryHobbyRankingList(
     val rankingList: List<HobbyRankingElement>,
 ) {
     data class HobbyRankingElement(
+        val hobbyId: Int,
         val hobby: String,
         val ratio: Double,
     )

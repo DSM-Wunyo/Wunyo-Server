@@ -20,20 +20,22 @@ class CustomHobbyRepositoryImpl(
             )
             .fetchFirst()
 
-    override fun countHobby(): Map<String, Int> {
+    override fun countHobby(): Map<Long, Pair<String, Int>> {
         val result = jpaQueryFactory
             .select(
+                resultEntity.hobby.id,
                 resultEntity.hobby.name,
                 resultEntity.id.count(),
             )
             .from(resultEntity)
-            .groupBy(resultEntity.hobby.name)
+            .groupBy(resultEntity.hobby.id, resultEntity.hobby.name)
             .fetch()
 
         return result.associate { tuple ->
-            val hobby = tuple.get(resultEntity.hobby.name)
+            val id = tuple.get(resultEntity.hobby.id)!!.toLong()
+            val hobby = tuple.get(resultEntity.hobby.name).toString()
             val count = tuple.get(resultEntity.id.count())!!.toInt()
-            hobby.toString() to count
+            id to (hobby to count)
         }
     }
 }
