@@ -29,7 +29,7 @@ class ResultEntity(
     @field:NotNull
     val createdDate: LocalDateTime = LocalDateTime.now(),
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hobby_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hobby_id", nullable = false, unique = false)
     val hobby: HobbyEntity,
 )
