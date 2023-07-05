@@ -45,7 +45,7 @@ class ResultService(
 
         val hobby = when {
             request.activeScore >= 36 && request.soloScore >= 36 -> {
-                hobbyRepository.findByHobbyAgeAndActiveAndSolo(
+                hobbyRepository.findHobby(
                     hobbyAge = ceilAge,
                     isActive = true,
                     isSolo = true,
@@ -53,7 +53,7 @@ class ResultService(
             }
 
             request.activeScore < 36 && request.soloScore >= 36 -> {
-                hobbyRepository.findByHobbyAgeAndActiveAndSolo(
+                hobbyRepository.findHobby(
                     hobbyAge = ceilAge,
                     isActive = false,
                     isSolo = true,
@@ -61,7 +61,7 @@ class ResultService(
             }
 
             request.activeScore >= 36 && request.soloScore < 36 -> {
-                hobbyRepository.findByHobbyAgeAndActiveAndSolo(
+                hobbyRepository.findHobby(
                     hobbyAge = ceilAge,
                     isActive = true,
                     isSolo = false,
@@ -69,7 +69,7 @@ class ResultService(
             }
 
             else -> {
-                hobbyRepository.findByHobbyAgeAndActiveAndSolo(
+                hobbyRepository.findHobby(
                     hobbyAge = ceilAge,
                     isActive = false,
                     isSolo = false,

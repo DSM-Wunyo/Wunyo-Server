@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+import jakarta.validation.constraints.NotNull
 
 @Table(name = "tbl_hobby")
 @Entity
@@ -21,10 +22,10 @@ class HobbyEntity(
     @Column(columnDefinition = "VARCHAR(100)", nullable = false)
     val content: String,
 
-    @Column(columnDefinition = "BIT(1)", nullable = false)
+    @field:NotNull
     val active: Boolean,
 
-    @Column(columnDefinition = "BIT(1)", nullable = false)
+    @field:NotNull
     val solo: Boolean,
 
     @Column(columnDefinition = "INT", nullable = false)
